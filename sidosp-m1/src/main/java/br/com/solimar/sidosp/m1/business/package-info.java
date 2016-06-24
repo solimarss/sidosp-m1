@@ -5,4 +5,4 @@
  * @author Solimar
  *
  */
-package br.com.solimar.business;
+package br.com.solimar.sidosp.m1.business;
