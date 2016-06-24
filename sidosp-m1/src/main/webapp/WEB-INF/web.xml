@@ -36,13 +36,7 @@
 	<!-- FIM - CONFIGURAÇÃO JSF -->
 
 
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>bootstrap</param-value>
-	</context-param>
-
-
-
+	
 	<session-config>
 		<session-timeout>10</session-timeout>
 	</session-config>
@@ -54,43 +48,5 @@
 	</welcome-file-list>
 
 
-
-
-
-	<!-- INICIO - FONT AWESOME -->
-	<context-param>
-		<param-name>primefaces.FONT_AWESOME</param-name>
-		<param-value>true</param-value>
-	</context-param>
-	<mime-mapping>
-		<extension>woff</extension>
-		<mime-type>application/font-woff</mime-type>
-	</mime-mapping>
-
-	<mime-mapping>
-		<extension>woff2</extension>
-		<mime-type>application/font-woff2</mime-type>
-	</mime-mapping>
-	<!-- FIM - FONT AWESOME -->
-
-
-
-	<!-- INICIO - SPRING SECURITY -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/security.xml</param-value>
-	</context-param>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<!-- FIM - SPRING SECURITY -->
 
 </web-app>
