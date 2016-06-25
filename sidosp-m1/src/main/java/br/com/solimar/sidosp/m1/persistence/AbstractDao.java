@@ -19,7 +19,7 @@ public abstract class AbstractDao<T extends Serializable> implements
 	private static final long serialVersionUID = 1L;
 	private final Class<T> clazz;
 	@Inject
-	private EntityManager em;
+	protected EntityManager em;
 
 	public AbstractDao(Class<T> clazz) {
 		this.clazz = clazz;
