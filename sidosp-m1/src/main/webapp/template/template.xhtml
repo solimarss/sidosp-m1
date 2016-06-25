@@ -26,30 +26,34 @@
 	<header class="aw-topbar">
 		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
 
-		<h:link>
-			<i class="fa  fa-fw  fa-linux "></i>SiDoSP - Sistema de Doação de Sangue e Plaquetas</h:link>
+		<h:link style="color:#A80000">
+			<i class="fa  fa-fw  fa-medkit"></i>SiDoSP - Sistema de Doação de Sangue e Plaquetas</h:link>
 		<!-- <h:graphicImage library="images" name="logo.png" /> -->
 	</header>
 
 	<aside class="aw-sidebar  js-sidebar">
+		<h:form>
+			<nav class="aw-menu">
+				<ul>
+					<li class="#{menuControllerMB.getItemCssClass('inicio')}"><h:link
+							outcome="/pages/inicio/inicio.jsf">
+							<i class="fa  fa-fw  fa-home"></i>Início</h:link></li>
 
-		<nav class="aw-menu">
-			<ul>
-				<li class="#{menuControllerMB.getItemCssClass('inicio')}"><h:link
-						outcome="/pages/inicio/inicio.jsf">
-						<i class="fa  fa-fw  fa-home"></i>Início</h:link></li>
-
-				<li class="#{menuControllerMB.getItemCssClass('doacao')}"><h:link
-						outcome="/pages/doacao/doacao_agend.jsf">
-						<i class="fa  fa-fw  fa-cog"></i>Agendar Doação</h:link></li>
+					<li class="#{menuControllerMB.getItemCssClass('doacao')}"><h:link
+							outcome="/pages/doacao/doacao_agend.jsf">
+							<i class="fa  fa-fw  fa-cog"></i>Agendar Doação</h:link></li>
 
 
-				<li class="#{menuControllerMB.getItemCssClass('doador')}"><h:link
-						outcome="/pages/doador/doador_edit.jsf">
-						<i class="fa  fa-fw  fa-user"></i>Seu Cadastro</h:link></li>
-			</ul>
-		</nav>
+					<li class="#{menuControllerMB.getItemCssClass('doador')}"><h:link
+							outcome="/pages/doador/doador_edit.jsf">
+							<i class="fa  fa-fw  fa-user"></i>Meu Cadastro</h:link></li>
 
+					<li class="#{menuControllerMB.getItemCssClass('sair')}"><h:commandLink
+							action="#{authenticatorMB.logout}">
+							<i class="fa  fa-fw  fa-sign-out"></i>Sair</h:commandLink></li>
+				</ul>
+			</nav>
+		</h:form>
 	</aside>
 
 	<section class="aw-content  js-content">
