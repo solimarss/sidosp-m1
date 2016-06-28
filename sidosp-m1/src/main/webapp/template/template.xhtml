@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
@@ -7,27 +8,47 @@
 <h:head>
 	<f:facet name="first">
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
 	</f:facet>
 
 	<title>SiDoSP</title>
 
-	<h:outputStylesheet library="styles" name="custom.css" />
-	<h:outputStylesheet library="styles" name="layout.css" />
-	<h:outputStylesheet library="styles" name="components.css" />
+	<h:outputStylesheet
+		library="styles"
+		name="custom.css" />
+	<h:outputStylesheet
+		library="styles"
+		name="layout.css" />
+	<h:outputStylesheet
+		library="styles"
+		name="components.css" />
 
-	<h:outputScript target="body" library="primefaces"
+	<h:outputScript
+		target="body"
+		library="primefaces"
 		name="jquery/jquery.js" />
-	<h:outputScript target="body" library="javascripts" name="app.js" />
+	<h:outputScript
+		target="body"
+		library="javascripts"
+		name="app.js" />
 </h:head>
 
 <h:body>
 
 	<header class="aw-topbar">
-		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
+		<a
+			href="#"
+			class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
 
-		<h:link >
-			<i class="fa  fa-fw  fa-medkit"></i><span class="top-app-name">SiDoSP - Sistema de Doação de Sangue e Plaquetas</span></h:link>
+		<h:link>
+			<span class="top-app-icon">
+				<i class="fa  fa-fw  fa-medkit"></i>
+			</span>
+			<span class="top-app-sigla">SiDoSP</span>
+			<span class="top-app-name"> - Sistema de Doação de Sangue e	Plaquetas</span>
+		</h:link>
 		<!-- <h:graphicImage library="images" name="logo.png" /> -->
 	</header>
 
@@ -35,21 +56,17 @@
 		<h:form>
 			<nav class="aw-menu">
 				<ul>
-					<li class="#{menuControllerMB.getItemCssClass('inicio')}"><h:link
-							outcome="/pages/inicio/inicio.jsf">
+					<li class="#{menuControllerMB.getItemCssClass('inicio')}"><h:link outcome="/pages/inicio/inicio.jsf">
 							<i class="fa  fa-fw  fa-home"></i>Início</h:link></li>
 
-					<li class="#{menuControllerMB.getItemCssClass('doacao')}"><h:link
-							outcome="/pages/doacao/doacao_agend.jsf">
+					<li class="#{menuControllerMB.getItemCssClass('doacao')}"><h:link outcome="/pages/doacao/doacao_agend.jsf">
 							<i class="fa  fa-fw  fa-cog"></i>Agendar Doação</h:link></li>
 
 
-					<li class="#{menuControllerMB.getItemCssClass('doador')}"><h:link
-							outcome="/pages/doador/doador_edit.jsf">
+					<li class="#{menuControllerMB.getItemCssClass('doador')}"><h:link outcome="/pages/doador/doador_edit.jsf">
 							<i class="fa  fa-fw  fa-user"></i>Meu Cadastro</h:link></li>
 
-					<li class="#{menuControllerMB.getItemCssClass('sair')}"><h:commandLink
-							action="#{authenticatorMB.logout}">
+					<li class="#{menuControllerMB.getItemCssClass('sair')}"><h:commandLink action="#{authenticatorMB.logout}">
 							<i class="fa  fa-fw  fa-sign-out"></i>Sair</h:commandLink></li>
 				</ul>
 			</nav>
