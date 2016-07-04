@@ -1,20 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-	<h:form id="login" >
-	<h:messages/>
-		<h:outputLabel for="username" value="Email:" />
-		<h:inputText id="username" value="#{authenticatorMB.username}" />
-		<h:outputLabel for="password" value="Senha:" />
-		<h:inputSecret id="password" value="#{authenticatorMB.password}" />
-		<div class="form-actions">
-			<h:commandButton value="Logar" action="#{authenticatorMB.logar}"/>
-		</div>
-	</h:form>
+
+	<h:head>
+		<title>Login</title>
+		<h:outputStylesheet
+			library="styles"
+			name="layout.css" />
+	</h:head>
+
+	<div class="ui-fluid div-login">
+
+
+		<h:form id="login">
+			<p:messages />
+
+			
+				<h:outputLabel
+					for="username"
+					value="Email:" />
+				<p:inputText
+					id="username"
+					value="#{authenticatorMB.username}" />
+				<h:outputLabel
+					for="password"
+					value="Senha:" />
+				<p:password
+					id="password"
+					value="#{authenticatorMB.password}" />
+			
+			<p:commandButton
+				value="Logar"
+				action="#{authenticatorMB.logar}"
+				ajax="false" />
+
+		</h:form>
+	</div>
+
 </h:body>
 </html>

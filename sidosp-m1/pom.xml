@@ -53,6 +53,31 @@
 		</dependency>
 		<!-- FIM - SRPING SECURITY -->
 
+		<!-- INICIO - TEST -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+			<version>2.2.10.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- FIM - TEST -->
+		
+
+		<!-- logging -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<repositories>

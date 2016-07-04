@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.slf4j.Logger;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -18,6 +19,7 @@ import br.com.solimar.sidosp.m1.business.DoadorBC;
 import br.com.solimar.sidosp.m1.domain.Role;
 import br.com.solimar.sidosp.m1.domain.User;
 import br.com.solimar.sidosp.m1.sis.context.UserContext;
+import br.com.solimar.sidosp.m1.sis.producer.Log;
 
 @SuppressWarnings("serial")
 @Named
@@ -30,9 +32,12 @@ public class AuthenticatorMB implements Serializable {
 	private UserContext userContext;
 	@Inject
 	private DoadorBC doadorBC;
+	@Inject
+	@Log
+	private Logger log;
 
 	public String logar() {
-		System.out.println("logar: " + username);
+		log.info("logger: " + username);
 		try {
 
 			Doador doador = doadorBC.findByMailAndPassword(username, password);
@@ -47,8 +52,7 @@ public class AuthenticatorMB implements Serializable {
 				user.setRoles(roles);
 				loginSpringSecurity(user);
 			} else {
-				throw new IllegalArgumentException(
-						"Erro: username ou password incorretos!");
+				throw new IllegalArgumentException("Erro: username ou password incorretos!");
 			}
 
 			return "/pages/inicio/inicio.jsf?faces-redirect=true";
@@ -76,8 +80,7 @@ public class AuthenticatorMB implements Serializable {
 
 	private void loginSpringSecurity(User user) {
 		userContext.setUser(user);
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-				user.getUsername(), null, user.getRoles());
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getRoles());
 		token.setDetails(user);
 
 		SecurityContextHolder.createEmptyContext();
@@ -91,8 +94,7 @@ public class AuthenticatorMB implements Serializable {
 	}
 
 	private void message(String message) {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(message));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
 	}
 
 }
