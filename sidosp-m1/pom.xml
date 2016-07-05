@@ -53,21 +53,7 @@
 		</dependency>
 		<!-- FIM - SRPING SECURITY -->
 
-		<!-- INICIO - TEST -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>org.jboss.weld.se</groupId>
-			<artifactId>weld-se</artifactId>
-			<version>2.2.10.Final</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- FIM - TEST -->
 
 
 		<!-- logging -->
@@ -86,7 +72,38 @@
 		</dependency>
 
 
+		<!-- INICIO - TEST -->
+		<!-- Arquillian JUnit Container -->
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- FIM - TEST -->
+
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Arquillian Jboss -->
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.4.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 
 	<repositories>
 		<repository>
@@ -99,6 +116,29 @@
 
 
 	</repositories>
+
+	<profiles>
+		<!-- Perfil do Wildfly 8.1.0 do tipo gerenciado -->
+		<profile>
+			<id>jboss</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-managed</artifactId>
+					<version>8.2.0.Final</version>
+					<scope>test</scope>
+					<!-- Exclui a chamada desnecessária do Jconsole (não vamos utilizar) -->
+					<exclusions>
+						<exclusion>
+							<groupId>sun.jdk</groupId>
+							<artifactId>jconsole</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
 
 	<!-- CONFIGURAR VERSÃO DO JAVA PARA 1.7 -->
 	<build>
