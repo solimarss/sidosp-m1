@@ -1,6 +1,7 @@
 package br.com.solimar.sidosp.m1.test;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -12,7 +13,10 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import br.com.solimar.sidosp.core.domain.Doador;
 import br.com.solimar.sidosp.m1.business.DoadorBC;
+import br.com.solimar.sidosp.m1.persistence.DoadorDAO;
+import br.com.solimar.sidosp.m1.sis.producer.EntityManagerProducer;
 
 @RunWith(Arquillian.class)
 public class PessoaDaoTeste {
@@ -23,6 +27,9 @@ public class PessoaDaoTeste {
 		Archive<?> arquivoTeste = ShrinkWrap.create(WebArchive.class, "aplicacaoTeste.war")
 				// Adicionando o pacote inteiro da classe PessoaDao, ou seja incluí todas as outras classes deste pacote
 				.addPackage(DoadorBC.class.getPackage())
+				.addPackage(DoadorDAO.class.getPackage())
+				.addPackage(Doador.class.getPackage())
+				.addPackage(EntityManagerProducer.class.getPackage())
 				// Adicionando apenas a classe Pessoa, e não o pacote inteiro como na linha anterior
 				.addClass(DoadorBC.class)
 				// Adicionando o arquivo persistence.xml para conexão JPA
