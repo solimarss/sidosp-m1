@@ -11,8 +11,8 @@ import br.com.solimar.sidosp.m1.business.DoadorBC;
 @RunWith(WeldJUnit4Runner.class)
 public class DoacaoTest {
 	
-	@Inject
-	private DoadorBC doadorBC;
+	//@Inject
+	//private DoadorBC doadorBC;
 	
 	
 	
@@ -20,8 +20,14 @@ public class DoacaoTest {
 	@Test
 	public void agendar(){
 		
+		System.out.println(getClass().getResource("META-INF/persistence.xml"));
 		
-		Doador doador = doadorBC.findByMailAndPassword("sol", "123");
+		try {
+			//Doador doador = doadorBC.findByMailAndPassword("sol", "123");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 	}
