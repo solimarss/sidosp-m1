@@ -1,3 +1,7 @@
+body{
+	margin: 0;
+}
+
 /* TOPBAR */
 .aw-topbar {
 	position: fixed;
@@ -93,13 +97,39 @@
 	}
 }
 
+/* Styles */
+.div-login-app-name{
+	text-align: center;
+}
+.login-app-sigla{
+	font-size: 20px;
+	color: #555574;
+}
 
+.login-app-name{
+	font-size: 20px;
+	color: #555574;
+}
 .div-login {
-	width: 400px;
-	height: 100px;
+	width: 95%;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -50px;
-	margin-left: -200px;
+	background-color: white;
+	padding: 20px;
+	top: none;
+	left: none;
+	margin-top: 20%;
+	margin-left: 2%;
+	border-bottom: 1px solid #dfe1e4;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+@media ( min-width : 510px) {
+	.div-login {
+		width: 500px;
+		top: 50%;
+		left: 50%;
+		margin-top: -150px;
+		margin-left: -250px;
+	}
 }

@@ -55,7 +55,7 @@ public class AuthenticatorMB implements Serializable {
 				user.setRoles(roles);
 				loginSpringSecurity(user);
 			} else {
-				throw new IllegalArgumentException("Erro: username ou password incorretos!");
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "E-mail ou Senha errada", null));
 			}
 
 			return "/pages/inicio/inicio.jsf?faces-redirect=true";
