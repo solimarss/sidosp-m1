@@ -26,7 +26,7 @@ public class PessoaDaoTeste {
 	public static Archive<?> criarArquivoTeste() {
 		Archive<?> arquivoTeste = ShrinkWrap.create(WebArchive.class, "aplicacaoTeste.war")
 				// Adicionando o pacote inteiro da classe PessoaDao, ou seja incluí todas as outras classes deste pacote
-				.addPackage(DoadorBC.class.getPackage())
+				.addPackage("br.com.solimar.sidosp.m1.business")
 				.addPackage(DoadorDAO.class.getPackage())
 				.addPackage(Doador.class.getPackage())
 				.addPackage(EntityManagerProducer.class.getPackage())
@@ -45,6 +45,7 @@ public class PessoaDaoTeste {
 	@Test
 	@InSequence(1)
 	public void testeSalvarPessoa() {
+		
 		
 		doadorBC.findByMailAndPassword("sol", "123");
 
