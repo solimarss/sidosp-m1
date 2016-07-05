@@ -1,19 +1,15 @@
 package br.com.solimar.sidosp.m1.sis.producer;
-
-import java.util.logging.Logger;
-
+import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class LoggerProducer {
-	//@Produces
-	public Logger produceLoger(InjectionPoint injectionPoint) {
 
-		Logger logger = Logger.getLogger(injectionPoint.getMember()
-				.getDeclaringClass().getName());
-		/*ConsoleHandler handler = new ConsoleHandler();
-		handler.setLevel(Level.FINER);
-		logger.addHandler(handler);*/
+    @Produces @Log
+    private Logger createLogger(InjectionPoint injectionPoint) {
+        return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass());
+    }
 
-		return logger;
-	}
 }
