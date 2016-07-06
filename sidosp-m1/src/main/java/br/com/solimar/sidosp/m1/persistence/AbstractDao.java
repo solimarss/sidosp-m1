@@ -3,8 +3,11 @@ package br.com.solimar.sidosp.m1.persistence;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.faces.bean.ReferencedBean;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaDelete;
@@ -20,6 +23,8 @@ public abstract class AbstractDao<T extends Serializable> implements
 	private final Class<T> clazz;
 	@Inject
 	protected EntityManager em;
+	@Resource
+	protected SessionContext context;
 
 	public AbstractDao(Class<T> clazz) {
 		this.clazz = clazz;
@@ -29,7 +34,7 @@ public abstract class AbstractDao<T extends Serializable> implements
 		return em.find(clazz, id);
 	}
 
-	public void persist(final T entity) {
+	public void insert(final T entity) {
 		em.persist(entity);
 	}
 	

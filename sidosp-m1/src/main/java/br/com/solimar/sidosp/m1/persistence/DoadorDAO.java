@@ -3,6 +3,8 @@ package br.com.solimar.sidosp.m1.persistence;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.Query;
 
 import br.com.solimar.sidosp.core.domain.Doador;
@@ -15,6 +17,19 @@ public class DoadorDAO extends AbstractDao<Doador> {
 	DoadorDAO() {
 		super(Doador.class);
 	}
+	
+	
+	
+	public void insert(Doador d1, Doador d2){
+		try {
+			em.persist(d1);
+			em.persist(d2);
+			
+		} catch (Exception e) {
+			context.setRollbackOnly();
+		}
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	public Doador findByMailAndPassword(String mail, String password) {
