@@ -40,7 +40,7 @@ public class AuthenticatorMB implements Serializable {
 		log.debug("logger debug: " + username);
 		log.info("logger info: " + username);
 		log.warn("logger warn: " + username);
-		
+
 		try {
 
 			Doador doador = doadorBC.findByMailAndPassword(username, password);
@@ -54,15 +54,23 @@ public class AuthenticatorMB implements Serializable {
 				roles.add(role);
 				user.setRoles(roles);
 				loginSpringSecurity(user);
+				log.info("Login realizado com sucesso");
+				return "/pages/inicio/inicio.jsf?faces-redirect=true";
+				
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "E-mail ou Senha errada", null));
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN,
+								"E-mail ou senha errados", null));
+				
+				return null;
 			}
-
-			return "/pages/inicio/inicio.jsf?faces-redirect=true";
+			
+			
 		} catch (IllegalArgumentException ex) {
 			message(ex.getMessage());
 		}
-		return "";
+		return null;
 	}
 
 	public String getPassword() {
@@ -83,7 +91,8 @@ public class AuthenticatorMB implements Serializable {
 
 	private void loginSpringSecurity(User user) {
 		userContext.setUser(user);
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getRoles());
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+				user.getUsername(), null, user.getRoles());
 		token.setDetails(user);
 
 		SecurityContextHolder.createEmptyContext();
@@ -97,7 +106,8 @@ public class AuthenticatorMB implements Serializable {
 	}
 
 	private void message(String message) {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(message));
 	}
 
 }
