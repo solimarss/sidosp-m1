@@ -34,8 +34,8 @@
 
 			<br />
 			<p:commandButton value="Entrar"
-				actionListener="#{authenticatorMB.logar}" style="margin-top: 10px"
-				update="messages_id" />
+				action="#{authenticatorMB.logar}" style="margin-top: 10px"
+				update="messages_id" ajax="true"/>
 
 			<p:messages id="messages_id" />
 

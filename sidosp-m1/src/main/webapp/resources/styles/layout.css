@@ -1,4 +1,4 @@
-body{
+body {
 	margin: 0;
 }
 
@@ -98,18 +98,20 @@ body{
 }
 
 /* Styles */
-.div-login-app-name{
+.div-login-app-name {
 	text-align: center;
 }
-.login-app-sigla{
+
+.login-app-sigla {
 	font-size: 20px;
 	color: #555574;
 }
 
-.login-app-name{
+.login-app-name {
 	font-size: 20px;
 	color: #555574;
 }
+
 .div-login {
 	width: 95%;
 	position: absolute;
@@ -120,8 +122,8 @@ body{
 	margin-top: 20%;
 	margin-left: 2%;
 	border-bottom: 1px solid #dfe1e4;
-    border-radius: 3px;
-    box-sizing: border-box;
+	border-radius: 3px;
+	box-sizing: border-box;
 }
 
 @media ( min-width : 510px) {
@@ -132,4 +134,20 @@ body{
 		margin-top: -150px;
 		margin-left: -250px;
 	}
+}
+
+.pnl_endereco_lab {
+	border: 1px solid blue;
+	padding: 5px;
+	border-radius: 2px;
+	color: blue;
+}
+
+.pnl_instrucao_doacao {
+	margin-bottom: 20px;
+	border: 1px solid red;
+	padding: 5px;
+	font-size: 13px;
+	border-radius: 2px;
+	color: red;
 }
