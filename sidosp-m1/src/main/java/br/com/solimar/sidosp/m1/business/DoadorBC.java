@@ -30,11 +30,6 @@ public class DoadorBC implements Serializable{
 		doadorDAO.insert(doador);
 	}
 	
-	@Transactional
-	public void insert(Doador d1, Doador d2){
-		doadorDAO.insert(d1,d2);
-	}
-	
 	public Doador findByMailAndPassword(String mail, String password){
 		return doadorDAO.findByMailAndPassword(mail, password);
 	}

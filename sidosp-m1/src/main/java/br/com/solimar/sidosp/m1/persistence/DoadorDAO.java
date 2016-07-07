@@ -20,17 +20,6 @@ public class DoadorDAO extends AbstractDao<Doador> {
 	
 	
 	
-	public void insert(Doador d1, Doador d2){
-		try {
-			em.persist(d1);
-			em.persist(d2);
-			
-		} catch (Exception e) {
-			context.setRollbackOnly();
-		}
-	}
-	
-
 	@SuppressWarnings("unchecked")
 	public Doador findByMailAndPassword(String mail, String password) {
 		try {

@@ -37,24 +37,7 @@ public class AuthenticatorMB implements Serializable {
 	private Logger log;
 
 	public String logar() {
-		
-		
-		
-		
-		doadorBC.findByMailAndPassword("sol", "123");
-		Doador d = new Doador();
-		d.setMail("test1");
-		d.setPassword("sasa");
-		
-		Doador d2 = new Doador();
-		d2.setMail("test2");
-		d2.setPassword("sasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasasa");
-		
-		doadorBC.insert(d, d2);
-		
-		
-		
-		
+				
 		log.debug("logger debug: " + username);
 		log.info("logger info: " + username);
 		log.warn("logger warn: " + username);
