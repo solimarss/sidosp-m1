@@ -11,7 +11,7 @@ import org.junit.Test;
 import br.com.solimar.sidosp.core.domain.Doador;
 import br.com.solimar.sidosp.m1.business.DoadorBC;
 
-public class DoadorTeste extends AbstractTest {
+public class DoadorTest extends AbstractTest {
 
 	private static final long serialVersionUID = 1L;
 	@Inject
