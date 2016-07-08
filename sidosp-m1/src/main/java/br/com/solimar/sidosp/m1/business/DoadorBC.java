@@ -1,12 +1,10 @@
 package br.com.solimar.sidosp.m1.business;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import br.com.solimar.sidosp.core.domain.Doador;
 import br.com.solimar.sidosp.m1.persistence.DoadorDAO;
@@ -28,6 +26,14 @@ public class DoadorBC implements Serializable{
 	
 	public void insert(Doador doador){
 		doadorDAO.insert(doador);
+	}
+	
+	public void deleteAll(){
+		doadorDAO.deleteAll();
+	}
+	
+	public List<Doador> findAll() {
+		return doadorDAO.findAll();
 	}
 	
 	public Doador findByMailAndPassword(String mail, String password){

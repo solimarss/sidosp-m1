@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.faces.bean.ReferencedBean;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaDelete;
@@ -37,10 +36,14 @@ public abstract class AbstractDao<T extends Serializable> implements
 	public void insert(final T entity) {
 		em.persist(entity);
 	}
-	
+
 	public T update(final T entity) {
 		return em.merge(entity);
 	}
+
+	/*public void delete(final T entity) {
+		em.remove(entity);
+	}*/
 
 	public List<T> findAll() {
 		final CriteriaQuery<T> criteriaQuery = em.getCriteriaBuilder()
