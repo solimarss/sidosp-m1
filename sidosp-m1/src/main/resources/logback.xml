@@ -9,7 +9,7 @@
 
     <logger name="com.memorynotfound" level="TRACE"/>
 
-    <root level="WARN">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>
 

@@ -10,8 +10,6 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.runner.RunWith;
 
-import br.com.solimar.sidosp.m1.sis.producer.EntityManagerProducer;
-
 @RunWith(Arquillian.class)
 public abstract class AbstractTest implements Serializable {
 

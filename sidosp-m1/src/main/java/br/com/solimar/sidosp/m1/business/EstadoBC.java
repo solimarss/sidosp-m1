@@ -1,6 +1,7 @@
 package br.com.solimar.sidosp.m1.business;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,6 +22,10 @@ public class EstadoBC implements Serializable {
 
 	public Estado find(Long id) {
 		return estadoDAO.find(id);
+	}
+	
+	public List<Estado> findAll() {
+		return estadoDAO.findAll();
 	}
 
 	public void insert(Estado doador) {
