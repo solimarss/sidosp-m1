@@ -9,7 +9,9 @@ import javax.inject.Named;
 
 import org.slf4j.Logger;
 
+import br.com.solimar.sidosp.core.domain.Cidade;
 import br.com.solimar.sidosp.core.domain.Estado;
+import br.com.solimar.sidosp.m1.business.CidadeBC;
 import br.com.solimar.sidosp.m1.business.EstadoBC;
 import br.com.solimar.sidosp.m1.sis.producer.Log;
 
@@ -26,7 +28,11 @@ public class DoacaoAgendMB implements Serializable {
 	@Inject
 	private EstadoBC estadoBC;
 	
+	@Inject
+	private CidadeBC cidadeBC;
+	
 	private List<Estado> estadosListBox;
+	private List<Cidade> cidadesListBox;
 	
 	@PostConstruct
 	private void init() {
@@ -44,6 +50,7 @@ public class DoacaoAgendMB implements Serializable {
 	
 	public void ajaxComboEstado() {
 		log.info("[ajaxComboEstado]");
+		
 	}
 	
 	
@@ -54,6 +61,14 @@ public class DoacaoAgendMB implements Serializable {
 
 	public void setEstadosListBox(List<Estado> estadosListBox) {
 		this.estadosListBox = estadosListBox;
+	}
+
+	public List<Cidade> getCidadesListBox() {
+		return cidadesListBox;
+	}
+
+	public void setCidadesListBox(List<Cidade> cidadesListBox) {
+		this.cidadesListBox = cidadesListBox;
 	}
 	
 	
