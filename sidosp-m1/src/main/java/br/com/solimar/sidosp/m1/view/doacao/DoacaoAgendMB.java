@@ -33,6 +33,7 @@ public class DoacaoAgendMB implements Serializable {
 	
 	private List<Estado> estadosListBox;
 	private List<Cidade> cidadesListBox;
+	private Long idEstadoSelected;
 	
 	@PostConstruct
 	private void init() {
@@ -50,7 +51,7 @@ public class DoacaoAgendMB implements Serializable {
 	
 	public void ajaxComboEstado() {
 		log.info("[ajaxComboEstado]");
-		
+		cidadesListBox = cidadeBC.findByUf(new Estado(idEstadoSelected));
 	}
 	
 	
@@ -69,6 +70,14 @@ public class DoacaoAgendMB implements Serializable {
 
 	public void setCidadesListBox(List<Cidade> cidadesListBox) {
 		this.cidadesListBox = cidadesListBox;
+	}
+
+	public Long getIdEstadoSelected() {
+		return idEstadoSelected;
+	}
+
+	public void setIdEstadoSelected(Long idEstadoSelected) {
+		this.idEstadoSelected = idEstadoSelected;
 	}
 	
 	

@@ -24,7 +24,7 @@
 
 
 					<p:outputLabel for="uf_id" value="UF:" />
-					<p:selectOneMenu id="uf_id">
+					<p:selectOneMenu id="uf_id" value="#{doacaoAgendMB.idEstadoSelected}">
 						<f:selectItem itemLabel="Selecione sua UF" itemValue="" />
 						<f:selectItems value="#{doacaoAgendMB.estadosListBox}" var="uf" itemValue="#{uf.id}" itemLabel="#{uf.nome}" />
 						<p:ajax event="change" listener="#{doacaoAgendMB.ajaxComboEstado()}" update="cidade_id" />
@@ -33,9 +33,7 @@
 					<p:outputLabel for="cidade_id" value="Cidade:" />
 					<p:selectOneMenu id="cidade_id">
 						<f:selectItem itemLabel="Selecione sua Cidade" itemValue="" />
-						<f:selectItem itemLabel="Belém" itemValue="" />
-						<f:selectItem itemLabel="Marabá" itemValue="" />
-						<f:selectItem itemLabel="Paraupebas" itemValue="" />
+						<f:selectItems value="#{doacaoAgendMB.cidadesListBox}" var="cid" itemValue="#{cid.id}" itemLabel="#{cid.nome}" />
 					</p:selectOneMenu>
 
 					<p:outputLabel for="laboratorio_id" value="Laboratório:" />
