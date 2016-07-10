@@ -9,10 +9,10 @@
 
 		<non-jta-data-source>java:jboss/datasources/sidospDS</non-jta-data-source>
 		<class>br.com.solimar.sidosp.core.domain.Doador</class>
-		<class>br.com.solimar.sidosp.core.domain.Doacao</class>
 		<class>br.com.solimar.sidosp.core.domain.Cidade</class>
 		<class>br.com.solimar.sidosp.core.domain.Estado</class>
 		<class>br.com.solimar.sidosp.core.domain.Laboratorio</class>
+		<class>br.com.solimar.sidosp.core.domain.Agendamento</class>
 
 
 		<properties>
