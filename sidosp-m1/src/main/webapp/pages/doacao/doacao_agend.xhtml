@@ -31,32 +31,32 @@
 					</p:selectOneMenu>
 
 					<p:outputLabel for="cidade_id" value="Cidade:" />
-					<p:selectOneMenu id="cidade_id">
+					<p:selectOneMenu id="cidade_id" value="#{doacaoAgendMB.idCidadeSelected}">
 						<f:selectItem itemLabel="Selecione sua Cidade" itemValue="" />
 						<f:selectItems value="#{doacaoAgendMB.cidadesListBox}" var="cid" itemValue="#{cid.id}" itemLabel="#{cid.nome}" />
+						<p:ajax event="change" listener="#{doacaoAgendMB.ajaxComboCidade()}" update="laboratorio_id" />
 					</p:selectOneMenu>
 
 					<p:outputLabel for="laboratorio_id" value="Laboratório:" />
-					<p:selectOneMenu id="laboratorio_id">
+					<p:selectOneMenu id="laboratorio_id" value="#{doacaoAgendMB.laboratorioSelected.id}">
 						<f:selectItem itemLabel="Selecione um Laboratório" itemValue="" />
-						<f:selectItem itemLabel="Hemocentro do Pará" itemValue="" />
-						<f:selectItem itemLabel="Laboratório Amaral Costa" itemValue="" />
-						<f:selectItem itemLabel="Laboratório Sabin em Belém" itemValue="" />
+						<f:selectItems value="#{doacaoAgendMB.laboratoriosListBox}" var="lab" itemValue="#{lab.id}" itemLabel="#{lab.nome}" />
+						<p:ajax event="change" listener="#{doacaoAgendMB.ajaxComboLaboratorio()}" update="pnl_endereco_lab_id" />
 					</p:selectOneMenu>
 					<h:outputText value=" " />
 
-					<h:panelGroup styleClass="pnl_endereco_lab" layout="block">
+					<h:panelGroup styleClass="pnl_endereco_lab" layout="block" id="pnl_endereco_lab_id">
 						<h:outputText value="Endereço:" style="font-weight: bold;" />
 						<br />
-						<h:outputText value="Laboratório Sabin de Belém" />
+						<h:outputText value="#{doacaoAgendMB.laboratorioSelected.nome}" />
 						<br />
-						<h:outputText value="Av. Alcindo Cacela 345" />
+						<h:outputText value="#{doacaoAgendMB.laboratorioSelected.logradouro}" />
 						<br />
-						<h:outputText value="Umarizal" />
+						<h:outputText value="#{doacaoAgendMB.laboratorioSelected.bairro}" />
 					</h:panelGroup>
 
 					<p:outputLabel for="data_id" value="Data:" />
-					<p:calendar id="data_id" style="width: 40px;" />
+					<p:calendar id="data_id" locale="pt" navigator="true" pattern="dd/MM/yyyy" style="width: 40px;" />
 
 					<p:spacer />
 					<p:commandButton value="Confimar Agendamento" style="margin-top: 20px; margin-bottom: 20px; width: auto" />
