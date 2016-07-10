@@ -21,6 +21,7 @@ public class User implements UserDetails {
    
     private String password;
     
+    
     private List<Role> roles;
  
    
@@ -92,4 +93,6 @@ public class User implements UserDetails {
         // TODO Auto-generated method stub
         return false;
     }
+
+	
 }

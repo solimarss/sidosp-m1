@@ -5,11 +5,11 @@ import javax.ejb.Stateless;
 import br.com.solimar.sidosp.core.domain.Agendamento;
 
 @Stateless
-public class DoacaoDAO extends AbstractDao<Agendamento> {
+public class AgendamentoDAO extends AbstractDao<Agendamento> {
 
 	private static final long serialVersionUID = 1L;
 
-	DoacaoDAO() {
+	AgendamentoDAO() {
 		super(Agendamento.class);
 	}
 }

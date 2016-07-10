@@ -1,4 +1,4 @@
-package br.com.solimar.sidosp.m1.view.doacao;
+package br.com.solimar.sidosp.m1.view.agendamento;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,14 +16,15 @@ import br.com.solimar.sidosp.core.domain.Agendamento;
 import br.com.solimar.sidosp.core.domain.Estado;
 import br.com.solimar.sidosp.core.domain.Laboratorio;
 import br.com.solimar.sidosp.m1.business.CidadeBC;
-import br.com.solimar.sidosp.m1.business.DoacaoBC;
+import br.com.solimar.sidosp.m1.business.AgendamentoBC;
 import br.com.solimar.sidosp.m1.business.EstadoBC;
 import br.com.solimar.sidosp.m1.business.LaboratorioBC;
+import br.com.solimar.sidosp.m1.sis.context.UserContext;
 import br.com.solimar.sidosp.m1.sis.producer.Log;
 
 @Named
 @javax.faces.view.ViewScoped
-public class DoacaoAgendMB implements Serializable {
+public class AgendamentoCadMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -32,7 +33,7 @@ public class DoacaoAgendMB implements Serializable {
 	private Logger log;
 	
 	@Inject
-	private DoacaoBC doacaoBC;
+	private AgendamentoBC agendamentoBC;
 	
 	@Inject
 	private EstadoBC estadoBC;
@@ -43,23 +44,25 @@ public class DoacaoAgendMB implements Serializable {
 	@Inject
 	private LaboratorioBC laboratorioBC;
 	
+	@Inject
+	private UserContext userContext;
+	
 	private List<Estado> estadosListBox;
 	private List<Cidade> cidadesListBox;
 	private List<Laboratorio> laboratoriosListBox;
-	private Long idEstadoSelected;
-	private Long idCidadeSelected;
-	private Laboratorio laboratorioSelected;
-	private Agendamento doacao;
+	private Agendamento agendamento;
 	
 	@PostConstruct
 	private void init() {
 		estadosListBox = estadoBC.findAll();
-		laboratorioSelected = new Laboratorio();
-		doacao = new Agendamento();
+		agendamento = new Agendamento();
 	}
 
 	public void save() {
-		doacaoBC.insert(doacao);
+		log.info("[save]");
+		agendamento.setDoador(userContext.getDoador());
+		agendamentoBC.insert(agendamento);
+		agendamento = new Agendamento();
 		FacesContext.getCurrentInstance().addMessage(
 				"Sucesso",
 				new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -72,17 +75,17 @@ public class DoacaoAgendMB implements Serializable {
 	
 	public void ajaxComboEstado() {
 		log.info("[ajaxComboEstado]");
-		cidadesListBox = cidadeBC.findByUf(new Estado(idEstadoSelected));
+		cidadesListBox = cidadeBC.findByUf(agendamento.getEstado());
 	}
 	
 	public void ajaxComboCidade() {
 		log.info("[ajaxComboCidade]");
-		laboratoriosListBox = laboratorioBC.findByCidade(new Cidade(idCidadeSelected));
+		laboratoriosListBox = laboratorioBC.findByCidade(agendamento.getCidade());
 	}
 	
 	public void ajaxComboLaboratorio() {
 		log.info("[ajaxComboLaboratorio]");
-		laboratorioSelected = laboratorioBC.find(laboratorioSelected.getId());
+		agendamento.setLaboratorio(laboratorioBC.find(agendamento.getLaboratorio().getId()));
 	}
 	
 	
@@ -103,13 +106,7 @@ public class DoacaoAgendMB implements Serializable {
 		this.cidadesListBox = cidadesListBox;
 	}
 
-	public Long getIdEstadoSelected() {
-		return idEstadoSelected;
-	}
-
-	public void setIdEstadoSelected(Long idEstadoSelected) {
-		this.idEstadoSelected = idEstadoSelected;
-	}
+	
 
 	public List<Laboratorio> getLaboratoriosListBox() {
 		return laboratoriosListBox;
@@ -119,29 +116,15 @@ public class DoacaoAgendMB implements Serializable {
 		this.laboratoriosListBox = laboratoriosListBox;
 	}
 
-	public Long getIdCidadeSelected() {
-		return idCidadeSelected;
+
+	public Agendamento getAgendamento() {
+		return agendamento;
 	}
 
-	public void setIdCidadeSelected(Long idCidadeSelected) {
-		this.idCidadeSelected = idCidadeSelected;
+	public void setAgendamento(Agendamento agendamento) {
+		this.agendamento = agendamento;
 	}
 
-	public Laboratorio getLaboratorioSelected() {
-		return laboratorioSelected;
-	}
-
-	public void setLaboratorioSelected(Laboratorio laboratorioSelected) {
-		this.laboratorioSelected = laboratorioSelected;
-	}
-
-	public Agendamento getDoacao() {
-		return doacao;
-	}
-
-	public void setDoacao(Agendamento doacao) {
-		this.doacao = doacao;
-	}
 	
 	
 	

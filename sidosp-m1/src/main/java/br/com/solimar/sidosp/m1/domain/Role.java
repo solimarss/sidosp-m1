@@ -3,18 +3,17 @@ package br.com.solimar.sidosp.m1.domain;
 import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
+
+import br.com.solimar.sidosp.core.domain.Doador;
  
 public class Role implements GrantedAuthority{
     private static final long serialVersionUID = -3968396919486158590L;
  
    
     private Long id;
-    
-   
     private String description;
-    
-    
     private String name;
+   
  
     public Long getId() {
         return id;
@@ -42,4 +41,6 @@ public class Role implements GrantedAuthority{
     public String getAuthority() {
         return name;
     }
+	
+	
 }

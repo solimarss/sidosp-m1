@@ -54,6 +54,8 @@ public class AuthenticatorMB implements Serializable {
 				List<Role> roles = new ArrayList<Role>();
 				roles.add(role);
 				user.setRoles(roles);
+				userContext.setDoador(doador);
+				userContext.setUser(user);
 				loginSpringSecurity(user);
 				log.info("Login realizado com sucesso");
 				return "/pages/inicio/inicio.jsf?faces-redirect=true";
@@ -91,7 +93,6 @@ public class AuthenticatorMB implements Serializable {
 	}
 
 	private void loginSpringSecurity(User user) {
-		userContext.setUser(user);
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
 				user.getUsername(), null, user.getRoles());
 		token.setDetails(user);

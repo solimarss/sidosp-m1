@@ -7,15 +7,15 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import br.com.solimar.sidosp.core.domain.Agendamento;
-import br.com.solimar.sidosp.m1.persistence.DoacaoDAO;
+import br.com.solimar.sidosp.m1.persistence.AgendamentoDAO;
 
 @Stateless
-public class DoacaoBC implements Serializable {
+public class AgendamentoBC implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private DoacaoDAO DoacaoDAO;
+	private AgendamentoDAO DoacaoDAO;
 
 	public Agendamento find(Long id) {
 		return DoacaoDAO.find(id);
