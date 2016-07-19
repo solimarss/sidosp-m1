@@ -8,6 +8,10 @@
 <h:body style="background-color: #3e98d3;">
 
 	<h:head>
+		<f:facet name="first">
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+		</f:facet>
 		<title>Login</title>
 		<h:outputStylesheet library="styles" name="layout.css" />
 	</h:head>
@@ -28,14 +32,13 @@
 			<br />
 			<h:outputLabel for="username" value="E-mail:" />
 			<p:inputText id="username" value="#{authenticatorMB.username}" />
-			
-			<h:outputLabel for="password" value="Senha:"  style="margin-top: 10px"/>
+
+			<h:outputLabel for="password" value="Senha:" style="margin-top: 10px" />
 			<p:password id="password" value="#{authenticatorMB.password}" />
 
 			<br />
-			<p:commandButton value="Entrar"
-				action="#{authenticatorMB.logar}" style="margin-top: 10px"
-				update="messages_id" ajax="true"/>
+			<p:commandButton value="Entrar" action="#{authenticatorMB.logar}"
+				style="margin-top: 10px" update="messages_id" ajax="true" />
 
 			<p:messages id="messages_id" />
 

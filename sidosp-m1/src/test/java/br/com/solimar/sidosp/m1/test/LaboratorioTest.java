@@ -18,7 +18,7 @@ public class LaboratorioTest extends AbstractTest {
 
 	private static final long serialVersionUID = 1L;
 	@Inject
-	private LaboratorioBC LaboratorioBC;
+	private LaboratorioBC laboratorioBC;
 	@Inject
 	private CidadeBC cidadeBC;
 	@Inject
@@ -27,12 +27,12 @@ public class LaboratorioTest extends AbstractTest {
 	@Test
 	@InSequence(1)
 	public void deleteAll() {
-		LaboratorioBC.deleteAll();		
+		laboratorioBC.deleteAll();		
 		cidadeBC.deleteAll();
 		estadoBC.deleteAll();
 		assertEquals(cidadeBC.findAll().size(), 0);
 		assertEquals(estadoBC.findAll().size(), 0);
-		assertEquals(LaboratorioBC.findAll().size(), 0);
+		assertEquals(laboratorioBC.findAll().size(), 0);
 	}
 	
 	@Test
@@ -81,15 +81,15 @@ public class LaboratorioTest extends AbstractTest {
 		lab4.setCidade(maraba);
 		
 		
-		LaboratorioBC.insert(lab1);
-		LaboratorioBC.insert(lab2);
-		LaboratorioBC.insert(lab3);
-		LaboratorioBC.insert(lab4);
+		laboratorioBC.insert(lab1);
+		laboratorioBC.insert(lab2);
+		laboratorioBC.insert(lab3);
+		laboratorioBC.insert(lab4);
 		
 		
 		assertEquals(estadoBC.findAll().size(), 2);
 		assertEquals(cidadeBC.findAll().size(), 4);
-		assertEquals(LaboratorioBC.findAll().size(), 4);
+		assertEquals(laboratorioBC.findAll().size(), 4);
 		
 		
 		
