@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 
@@ -54,6 +55,7 @@ public class AgendamentoCadMB implements Serializable {
 	
 	@PostConstruct
 	private void init() {
+		log.info("[int]");
 		estadosListBox = estadoBC.findAll();
 		agendamento = new Agendamento();
 	}
@@ -69,6 +71,25 @@ public class AgendamentoCadMB implements Serializable {
 						"Agendamento realizado com sucesso", "Sucesso"));
 	}
 
+	//@Transactional
+	public void testeTransacao() {
+		
+		//aqui no managedBean funcionou a integridade com o @Transactional
+		
+		/*Estado estado = new Estado();
+		estado.setNome("Amazonas");
+		estado.setSigla("AM");
+		
+		estadoBC.insert(estado);*/
+		
+	/*	Cidade cidade = new Cidade();
+		cidade.setNome("Altamira");
+		cidade.setEstado(new Estado(10000L));
+		
+		cidadeBC.insert(cidade);*/
+		estadoBC.testeTransacao();
+		
+	}
 
 	
 	
