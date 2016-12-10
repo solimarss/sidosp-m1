@@ -6,7 +6,7 @@
  
      <sec:http auto-config="true">
  
-        <sec:intercept-url pattern="/page/**"
+        <sec:intercept-url pattern="/pages/**"
             access="hasRole('DOADOR')" />
   
         <sec:form-login login-page="/security/login.jsf"
